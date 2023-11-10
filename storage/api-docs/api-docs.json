@@ -1,0 +1,1306 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "My doc API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/": {},
+        "/api/register": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "create user",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "example": "Some Name"
+                                            },
+                                            "email": {
+                                                "type": "email",
+                                                "example": "demo@mail.ru"
+                                            },
+                                            "password": {
+                                                "type": "string",
+                                                "example": "123456789"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "User created successfully."
+                                        },
+                                        "User": {
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Some Name"
+                                                },
+                                                "email": {
+                                                    "type": "string",
+                                                    "example": "demo@mail.ru"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2023-11-08T06:56:27.000000Z"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2023-11-08T06:56:27.000000Z"
+                                                },
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": "14"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "user login",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "email": {
+                                                "type": "email",
+                                                "example": "demo@mail.ru"
+                                            },
+                                            "password": {
+                                                "type": "string",
+                                                "example": "123456789"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "User": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": "14"
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Some Name"
+                                                },
+                                                "email": {
+                                                    "type": "string",
+                                                    "example": "demo@mail.ru"
+                                                },
+                                                "email_verified_at": {
+                                                    "type": "string",
+                                                    "example": "null"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2023-11-08T06:56:27.000000Z"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2023-11-08T06:56:27.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "authorization": {
+                                            "properties": {
+                                                "token": {
+                                                    "type": "string",
+                                                    "example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luI\n *                                                                                               iwiaWF0IjoxNjk5NDM5NDQyLCJleHAiOjE2OTk0NDMwNDIsIm5iZiI6MTY5OTQzOTQ0MiwianRpIjoiNGhsckNpaGJ\n *                                                                                               2QUltYTRwSyIsInN1YiI6IjEyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.\n *                                                                                               7ZIPHuyYF8trjjEayQnjb1GaUQY9kn9uO23o2EWcAoU"
+                                                },
+                                                "type": {
+                                                    "type": "string",
+                                                    "example": "bearer"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/logout": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "user logout",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Successfully logged out."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/forgetPassword": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "user forgetPassword",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "email": {
+                                                "type": "email",
+                                                "example": "demo@mail.ru"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Please open your email and click on url."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/refresh": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "refresh token",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "User": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": "14"
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Some Name"
+                                                },
+                                                "email": {
+                                                    "type": "string",
+                                                    "example": "demo@mail.ru"
+                                                },
+                                                "email_verified_at": {
+                                                    "type": "string",
+                                                    "example": "null"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2023-11-08T06:56:27.000000Z"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2023-11-08T06:56:27.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "authorization": {
+                                            "properties": {
+                                                "token": {
+                                                    "type": "string",
+                                                    "example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luI\n *                                                                                                iwiaWF0IjoxNjk5NDM5NDQyLCJleHAiOjE2OTk0NDMwNDIsIm5iZiI6MTY5OTQzOTQ0MiwianRpIjoiNGhsckNpaGJ\n *                                                                                                2QUltYTRwSyIsInN1YiI6IjEyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.\n *                                                                                                7ZIPHuyYF8trjjEayQnjb1GaUQY9kn9uO23o2EWcAoU"
+                                                },
+                                                "type": {
+                                                    "type": "string",
+                                                    "example": "bearer"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/reset-password": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "user reset-password",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "password": {
+                                                "type": "string",
+                                                "example": "Some password"
+                                            },
+                                            "confirmPassword": {
+                                                "type": "string",
+                                                "example": "Some Password"
+                                            },
+                                            "token": {
+                                                "type": "string",
+                                                "example": "aGFrb2JAbWFpbC5ydQ=="
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Your password changed"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/add-book": {
+            "post": {
+                "tags": [
+                    "Book"
+                ],
+                "summary": "create",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "example": "Some Name"
+                                            },
+                                            "author": {
+                                                "type": "string",
+                                                "example": "Some Name"
+                                            },
+                                            "publish_date": {
+                                                "type": "string",
+                                                "format": "date",
+                                                "example": "2016-05-26"
+                                            },
+                                            "user_id": {
+                                                "type": "integer",
+                                                "example": "12"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Some Name"
+                                        },
+                                        "author": {
+                                            "type": "string",
+                                            "example": "Some Name"
+                                        },
+                                        "publish_date": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "Some Date"
+                                        },
+                                        "user_id": {
+                                            "type": "integer",
+                                            "example": "12"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2023-11-08T06:56:27.000000Z"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2023-11-08T06:56:27.000000Z"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": "122"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/books": {
+            "get": {
+                "tags": [
+                    "Book"
+                ],
+                "summary": "all books",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": "122"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Some Name"
+                                                    },
+                                                    "author": {
+                                                        "type": "string",
+                                                        "example": "Some Name"
+                                                    },
+                                                    "publish_date": {
+                                                        "type": "string",
+                                                        "format": "date",
+                                                        "example": "Some Date"
+                                                    },
+                                                    "user_id": {
+                                                        "type": "integer",
+                                                        "example": "12"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "format": "date",
+                                                        "example": "2023-11-08T06:56:27.000000Z"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date",
+                                                        "example": "2023-11-08T06:56:27.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/book/{book}": {
+            "get": {
+                "tags": [
+                    "Book"
+                ],
+                "summary": "show book",
+                "parameters": [
+                    {
+                        "name": "book",
+                        "in": "path",
+                        "description": "ID Book",
+                        "example": 28
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": "28"
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Some Name"
+                                        },
+                                        "author": {
+                                            "type": "string",
+                                            "example": "Some Name"
+                                        },
+                                        "publish_date": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "Some Date"
+                                        },
+                                        "user_id": {
+                                            "type": "integer",
+                                            "example": "12"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2023-11-08T06:56:27.000000Z"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2023-11-08T06:56:27.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/update-book/{book}": {
+            "put": {
+                "tags": [
+                    "Book"
+                ],
+                "summary": "update book",
+                "parameters": [
+                    {
+                        "name": "book",
+                        "in": "path",
+                        "description": "ID Book",
+                        "example": 28
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "example": "Some Name"
+                                            },
+                                            "author": {
+                                                "type": "string",
+                                                "example": "Some Name"
+                                            },
+                                            "publish_date": {
+                                                "type": "string",
+                                                "format": "date",
+                                                "example": "2016-05-26"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Book Updated."
+                                        },
+                                        "Book": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": "28"
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Some Name"
+                                                },
+                                                "author": {
+                                                    "type": "string",
+                                                    "example": "Some Name"
+                                                },
+                                                "publish_date": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2016-05-26"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2023-11-08T06:56:27.000000Z"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2023-11-08T06:56:27.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/delete-book/{book}": {
+            "delete": {
+                "tags": [
+                    "Book"
+                ],
+                "summary": "delete book",
+                "parameters": [
+                    {
+                        "name": "book",
+                        "in": "path",
+                        "description": "ID Book",
+                        "example": 28
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Book Deleted."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/add-event": {
+            "post": {
+                "tags": [
+                    "Events"
+                ],
+                "summary": "create",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "example": "Some Name"
+                                            },
+                                            "location": {
+                                                "type": "string",
+                                                "example": "Some location"
+                                            },
+                                            "date": {
+                                                "type": "string",
+                                                "format": "date",
+                                                "example": "2016-05-26"
+                                            },
+                                            "user_id": {
+                                                "type": "integer",
+                                                "example": "12"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Event  Added."
+                                        },
+                                        "Event": {
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Some Name"
+                                                },
+                                                "location": {
+                                                    "type": "string",
+                                                    "example": "Some location"
+                                                },
+                                                "date": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "Some Date"
+                                                },
+                                                "user_id": {
+                                                    "type": "integer",
+                                                    "example": "12"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2023-11-08T06:56:27.000000Z"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2023-11-08T06:56:27.000000Z"
+                                                },
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": "122"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/events": {
+            "get": {
+                "tags": [
+                    "Events"
+                ],
+                "summary": "all events",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "Data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": "122"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Some Name"
+                                                    },
+                                                    "location": {
+                                                        "type": "string",
+                                                        "example": "Some location"
+                                                    },
+                                                    "date": {
+                                                        "type": "string",
+                                                        "format": "date",
+                                                        "example": "Some Date"
+                                                    },
+                                                    "user_id": {
+                                                        "type": "integer",
+                                                        "example": "12"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "format": "date",
+                                                        "example": "2023-11-08T06:56:27.000000Z"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date",
+                                                        "example": "2023-11-08T06:56:27.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/event/{event}": {
+            "get": {
+                "tags": [
+                    "Events"
+                ],
+                "summary": "show event",
+                "parameters": [
+                    {
+                        "name": "event",
+                        "in": "path",
+                        "description": "ID Book",
+                        "example": 28
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": "28"
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Some Name"
+                                        },
+                                        "location": {
+                                            "type": "string",
+                                            "example": "Some location"
+                                        },
+                                        "date": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "Some Date"
+                                        },
+                                        "user_id": {
+                                            "type": "integer",
+                                            "example": "12"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2023-11-08T06:56:27.000000Z"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2023-11-08T06:56:27.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/update-event/{event}": {
+            "put": {
+                "tags": [
+                    "Events"
+                ],
+                "summary": "update event",
+                "parameters": [
+                    {
+                        "name": "event",
+                        "in": "path",
+                        "description": "ID Book",
+                        "example": 70
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "example": "Some Name"
+                                            },
+                                            "location": {
+                                                "type": "string",
+                                                "example": "Ereven Armenia"
+                                            },
+                                            "date": {
+                                                "type": "string",
+                                                "format": "date",
+                                                "example": "2016-05-26"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Event Updated."
+                                        },
+                                        "Event": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": "70"
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Some Name"
+                                                },
+                                                "location": {
+                                                    "type": "string",
+                                                    "example": "Ereven Armenia"
+                                                },
+                                                "date": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2016-05-26"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2023-11-08T06:56:27.000000Z"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2023-11-08T06:56:27.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/delete-event/{event}": {
+            "delete": {
+                "tags": [
+                    "Events"
+                ],
+                "summary": "delete event",
+                "parameters": [
+                    {
+                        "name": "event",
+                        "in": "path",
+                        "description": "ID Book",
+                        "example": 74
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Event Deleted."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/image": {
+            "post": {
+                "tags": [
+                    "Image"
+                ],
+                "summary": "upload image",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "image"
+                                ],
+                                "properties": {
+                                    "image": {
+                                        "description": "file to upload",
+                                        "type": "file",
+                                        "example": "image.png"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "image": {
+                                            "type": "string",
+                                            "example": "image/AHlaX9L2WeivBN17QNXdtXfagLkLhKPj8k4MhaA6.png"
+                                        },
+                                        "user_id": {
+                                            "type": "integer",
+                                            "example": "14"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2023-11-08T06:56:27.000000Z"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2023-11-08T06:56:27.000000Z"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": "14"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/delete-image/{image}": {
+            "delete": {
+                "tags": [
+                    "Image"
+                ],
+                "summary": "delete image",
+                "parameters": [
+                    {
+                        "name": "image",
+                        "in": "path",
+                        "description": "ID Image",
+                        "example": 50
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "you deleted your image"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/update-image": {
+            "post": {
+                "tags": [
+                    "Image"
+                ],
+                "summary": "update image",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "image"
+                                ],
+                                "properties": {
+                                    "image": {
+                                        "description": "file to upload",
+                                        "type": "file",
+                                        "example": "image.png"
+                                    },
+                                    "id": {
+                                        "type": "integer",
+                                        "example": "52"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "You changed your image"
+                                        },
+                                        "image": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": "52"
+                                                },
+                                                "image": {
+                                                    "type": "string",
+                                                    "example": "image/AHlaX9L2WeivBN17QNXdtXfagLkLhKPj8k4MhaA6.png"
+                                                },
+                                                "user_id": {
+                                                    "type": "integer",
+                                                    "example": "14"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2023-11-08T06:56:27.000000Z"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2023-11-08T06:56:27.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    }
+}
